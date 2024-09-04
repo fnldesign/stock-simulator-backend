@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "Stock Simulator API",
+    "description": "Postman Collection for Stock Simulator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        },
+        "description": "Check the health status of the backend."
+      }
+    },
+    {
+      "name": "Get Exchanges",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/exchanges",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "exchanges"]
+        },
+        "description": "Retrieve a list of valid stock exchanges."
+      }
+    },
+    {
+      "name": "Simulate Investment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"exchange\": \"NASDAQ\",\n    \"symbol\": \"AAPL\",\n    \"start_date\": \"2023-01-01\",\n    \"end_date\": \"2023-09-01\",\n    \"start_value\": 1000\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/simulate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "simulate"]
+        },
+        "description": "Simulate the investment growth or loss for a given stock symbol and date range."
+      }
+    }
+  ]
+}

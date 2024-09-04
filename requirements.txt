@@ -1,0 +1,8 @@
+Flask
+Flask-CORS
+yfinance
+python-dotenv
+gunicorn
+flasgger  # Added for Swagger UI
+marshmallow # Define swagger schemas to flasgger
+pandas #Pandas to handle with timezone formats

@@ -1,0 +1,16 @@
+2024-09-01 13:01:18,088 INFO: 127.0.0.1 - - [01/Sep/2024 13:01:18] "POST /api/simulate HTTP/1.1" 200 - [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-01 13:02:16,813 INFO: 127.0.0.1 - - [01/Sep/2024 13:02:16] "OPTIONS /api/simulate HTTP/1.1" 200 - [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-01 13:02:17,120 INFO: Simulate endpoint called with data: {'symbol': 'ITSA4.SAX', 'start_date': '2023-01-01', 'end_date': '2024-10-01', 'start_value': 1000, 'exchange': 'NYSE'} [in /home/flaviolopes/projects/personal/trading-bots/stock-simulator/stock-simulator-backend/routes/routes.py:252]
+2024-09-01 13:02:19,323 ERROR: 404 Client Error: Not Found for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/ITSA4.SAX?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=ITSA4.SAX&crumb=qvy.47tWGGw [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/yfinance/scrapers/quote.py:581]
+2024-09-01 13:02:19,513 WARNING: Validation error in simulation: Invalid exchange or stock symbol [in /home/flaviolopes/projects/personal/trading-bots/stock-simulator/stock-simulator-backend/routes/routes.py:273]
+2024-09-01 13:02:19,515 INFO: 127.0.0.1 - - [01/Sep/2024 13:02:19] "[31m[1mPOST /api/simulate HTTP/1.1[0m" 400 - [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:48:33,876 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.28.232.139:5000 [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:48:33,877 INFO: [33mPress CTRL+C to quit[0m [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:48:33,878 INFO:  * Restarting with stat [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:48:34,570 WARNING:  * Debugger is active! [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:48:34,575 INFO:  * Debugger PIN: 243-178-516 [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:52:35,291 INFO: 127.0.0.1 - - [04/Sep/2024 01:52:35] "OPTIONS /api/simulate HTTP/1.1" 200 - [in /home/flaviolopes/.pyenv/versions/3.10.0/lib/python3.10/site-packages/werkzeug/_internal.py:97]
+2024-09-04 01:52:35,549 INFO: Simulate endpoint called with data: {'symbol': 'AAPL', 'start_date': '2023-10-01', 'end_date': '2024-10-01', 'start_value': 1000, 'exchange': 'NYSE'} [in /home/flaviolopes/projects/personal/trading-bots/stock-simulator/stock-simulator-backend/routes/routes.py:252]
