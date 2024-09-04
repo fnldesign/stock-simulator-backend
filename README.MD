@@ -56,13 +56,16 @@ source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
 ```
 
-### 4. Run the Backend Server:
+### 4. Create required env variables
+Create environment variables to config backend. We make an sample .env file at .env.sample
+
+### 5. Run the Backend Server:
 
 ```bash
 python app.py
 ```
 
-### 5. Test backend is UP :
+### 6. Test backend is UP :
 
 The backend API will be accessible at http://localhost:5000. There are a health endpoint at api/health path, so to test call Backend Server plus /health endpoint to check if it is up and running.
 
