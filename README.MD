@@ -25,10 +25,14 @@ The backend will be built with Flask, featuring:
 ```
 stock-simulator-backend/
 │
-├── app.py                # Main entry point for running the app
-├── config.py             # Configuration file for environment variables
-├── routes.py             # All Flask routes for the API
-├── simulator.py          # Core logic for stock simulation
+├── app.py                                          # Main entry point for running the app
+├── \config\config.py                               # Configuration file for environment variables
+├── \config\log_config.py                           # Configuration for log
+├── \routes\routes.py                               # All Flask routes for the API
+├── \services\stock_simulator_service.py            # Core logic for stock simulation
+├── \services\exchange_service.py                   # Service to Get Exchange Infos
+├── \tests                                          # Pytest Unit Tests
+├── \postman                                        # Postman collection and environment to test API in Postmand
 ├── requirements.txt      # Python dependencies
 └── logs/                 # Directory for logs
     └── app.log           # Log file for application logging
