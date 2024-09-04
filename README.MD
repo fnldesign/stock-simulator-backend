@@ -40,42 +40,68 @@ stock-simulator-backend/
 
 ## How to Run the Backend Application
 
-### 1. Clone the Repository or Create the Directory:
+### Run in a local environment
+
+#### 1. Clone the Repository or Create the Directory:
 
 ```bash
 mkdir stock-simulator-backend
 cd stock-simulator-backend
 ```
 
-### 2. Create and Activate Virtual Environment:
+#### 2. Create and Activate Virtual Environment:
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 ```
 
-### 3. Install Required Dependencies:
+#### 3. Install Required Dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Create required env variables
+#### 4. Create required env variables
 Create environment variables to config backend. We make an sample .env file at .env.sample
 
-### 5. Run the Backend Server:
+#### 5. Run the Backend Server:
 
 ```bash
 python app.py
 ```
 
-### 6. Test backend is UP :
+#### 6. Test backend is UP :
 
 The backend API will be accessible at http://localhost:5000. There are a health endpoint at api/health path, so to test call Backend Server plus /health endpoint to check if it is up and running.
 
 ```bash
 curl https://localhost:5000/api/health
 ```
+
+### Run in docker
+We developed a Dockerfile to run this project in docker too. To run in docker you need complie docker image, following next steps
+
+#### 1. Build docker image
+```bash
+docker build -t stock-simulator-backend .
+```
+
+#### 2. Execute docker container
+```bash
+docker run -p 5000:5000 stock-simulator-backend
+```
+
+or change env vars using
+
+```bash
+docker run -p 5000:5000 -e FLASK_DEBUG=true stock-simulator-backend
+```
+
+#### 3. Test backend is UP :
+
+The backend API will be accessible at http://localhost:5000. There are a health endpoint at api/health path, so to test call Backend Server plus /health endpoint to check if it is up and running.
+
 
 ## How to run in production
 
