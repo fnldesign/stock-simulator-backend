@@ -6,6 +6,8 @@ The **Stock Simulator Backend** provides an API service to simulate the growth o
 
 This backend service complements the **Stock Investment Simulation Frontend** by supplying the necessary data and logic to power the investment simulations.
 
+This project follows best architectural practices such as structured logs, advanced error handling, modular layers using common design patterns, and other non-functional requirements.
+
 ---
 
 ## **Key Features**
@@ -55,7 +57,7 @@ Follow these steps to set up the backend locally:
 
 ### **Prerequisites**
 
-- Python 3.8+
+- Python 3.10+
 - Pip (Python package manager)
 
 ### **Steps**
@@ -84,13 +86,19 @@ Follow these steps to set up the backend locally:
 
    Create a `.env` file based on the provided `.env.sample` and set appropriate values.
 
-5. **Run the Server**:
+5. **Run the Backend Server**:
 
    ```bash
    python app.py
    ```
 
-The backend will be accessible at `http://localhost:5000`. Test it with the `/api/health` endpoint.
+6. **Test the Backend**:
+
+   The backend API will be accessible at `http://localhost:5000`. Test it with the `/api/health` endpoint:
+
+   ```bash
+   curl http://localhost:5000/api/health
+   ```
 
 ---
 
@@ -109,6 +117,30 @@ To run the backend in a Docker container:
    ```bash
    docker run -p 5000:5000 stock-simulator-backend
    ```
+
+3. **Run with Environment Variables**:
+
+   ```bash
+   docker run -p 5000:5000 -e FLASK_DEBUG=true stock-simulator-backend
+   ```
+
+4. **Test the Backend**:
+
+   The backend API will be accessible at `http://localhost:5000`. Test it with the `/api/health` endpoint:
+
+   ```bash
+   curl http://localhost:5000/api/health
+   ```
+
+---
+
+## **How to Run in Production**
+
+Production Server Setup: Ensure to use a production-grade WSGI server like Gunicorn or uWSGI. Here’s a quick setup for Gunicorn:
+
+```bash
+gunicorn app:app --bind 0.0.0.0:5000
+```
 
 ---
 
