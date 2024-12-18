@@ -267,7 +267,7 @@ def simulate():
             # Format the date using pandas to handle timezone conversion
             ohlcv['Date'] = pd.to_datetime(ohlcv['Date']).strftime('%Y-%m-%d %H:%M:%S')
 
-        app.logger.info(f"Simulation successful: {result}")
+        app.logger.info(f"Simulation successful")
         return jsonify({"success": True, "result": result}), 200
     except ValueError as e:
         app.logger.warning(f"Validation error in simulation: {str(e)}")
