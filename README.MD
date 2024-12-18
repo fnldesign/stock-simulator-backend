@@ -2,108 +2,139 @@
 
 ## Project Overview
 
-Stocke Simulator app is an app to simulate growth or decrease rate in percentual of investment in a stock symbol. I’ll provide an exchange chooses from a predefined list of valid exchanges, a stock symbol, system will validate this stock symbol in exchange, start and end investment date and a start value of investment.
+The **Stock Simulator Backend** provides an API service to simulate the growth or decrease of investments based on historical stock data. Users can input parameters like stock symbols, investment dates, and starting values, and the system calculates the percentage change, final value, and other key metrics.
 
-So you press simulate button and system get historical data for symbol and get percentage of growth or decrease, start value, end value and value of growth or decrease in value.
+This backend service complements the **Stock Investment Simulation Frontend** by supplying the necessary data and logic to power the investment simulations.
 
-This is a separated application or modules to deal with frontend or UI of app and backend API service to frontend.
+This project follows best architectural practices such as structured logs, advanced error handling, modular layers using common design patterns, and other non-functional requirements.
 
-This project follow best architectural practices like logs, advanced error handling, separeted layers using common design patterns and another best practices as non functional requirements.
+---
 
-This is build with beautiful design system in front end using by example bootstrap UI components and design system. I need place UI and Bsckend validations and field correct formats.
+## **Key Features**
 
-## Backend Architecture
-The backend will be built with Flask, featuring:
+- **Stock Validation**: Validates stock symbols against a predefined exchange list.
+- **Investment Simulation**: Calculates growth percentages and final values based on historical data.
+- **REST API**: Features clear, RESTful endpoints for seamless frontend-backend communication.
+- **Error Handling**: Advanced error logging and informative messages.
+- **Modular Architecture**: Separation of concerns for scalable and maintainable code.
 
-1. Separation of Concerns: Organized by modules (app.py, config.py, routes.py, simulator.py).
-2. Logging and Error Handling: Proper logging and structured error handling.
-3. Environment Configurations: Configurations managed through environment variables.
-4. Endpoints: REST API endpoints for health check, fetching exchanges, and simulating stock investment.
+---
 
-### Backend Project Structure
+## **Backend Architecture**
 
-```
+The backend is built using **Flask**, following best practices for modularity and maintainability:
+
+- **Separation of Concerns**: Organized by modules (app.py, config.py, routes.py, etc.).
+- **Logging and Error Handling**: Includes structured logging and robust error handling.
+- **Environment Configurations**: Manages settings through environment variables.
+- **RESTful Endpoints**: For health checks, fetching exchanges, and simulating stock investments.
+
+### **Project Structure**
+
+```plaintext
 stock-simulator-backend/
-│
-├── app.py                                          # Main entry point for running the app
-├── \config\config.py                               # Configuration file for environment variables
-├── \config\log_config.py                           # Configuration for log
-├── \routes\routes.py                               # All Flask routes for the API
-├── \services\stock_simulator_service.py            # Core logic for stock simulation
-├── \services\exchange_service.py                   # Service to Get Exchange Infos
-├── \tests                                          # Pytest Unit Tests
-├── \postman                                        # Postman collection and environment to test API in Postmand
-├── requirements.txt      # Python dependencies
-└── logs/                 # Directory for logs
-    └── app.log           # Log file for application logging
+├── app.py                  # Main entry point
+├── config/
+│   ├── config.py           # Environment variable configurations
+│   └── log_config.py       # Logging configurations
+├── routes/
+│   └── routes.py           # API routes
+├── services/
+│   ├── stock_simulator_service.py  # Stock simulation logic
+│   └── exchange_service.py         # Exchange information logic
+├── tests/                  # Unit tests with Pytest
+├── postman/                # Postman collections and environments
+├── requirements.txt        # Python dependencies
+└── logs/
+    └── app.log             # Application log files
 ```
 
-## How to Run the Backend Application
+---
 
-### Run in a local environment
+## **Installation**
 
-#### 1. Clone the Repository or Create the Directory:
+Follow these steps to set up the backend locally:
 
-```bash
-mkdir stock-simulator-backend
-cd stock-simulator-backend
-```
+### **Prerequisites**
 
-#### 2. Create and Activate Virtual Environment:
+- Python 3.10+
+- Pip (Python package manager)
 
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-```
+### **Steps**
 
-#### 3. Install Required Dependencies:
+1. **Clone the Repository**:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   git clone https://github.com/fnldesign/stock-simulator-backend.git
+   cd stock-simulator-backend
+   ```
 
-#### 4. Create required env variables
-Create environment variables to config backend. We make an sample .env file at .env.sample
+2. **Set Up Virtual Environment**:
 
-#### 5. Run the Backend Server:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: `venv\Scripts\activate`
+   ```
 
-```bash
-python app.py
-```
+3. **Install Dependencies**:
 
-#### 6. Test backend is UP :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-The backend API will be accessible at http://localhost:5000. There are a health endpoint at api/health path, so to test call Backend Server plus /health endpoint to check if it is up and running.
+4. **Configure Environment Variables**:
 
-```bash
-curl https://localhost:5000/api/health
-```
+   Create a `.env` file based on the provided `.env.sample` and set appropriate values.
 
-### Run in docker
-We developed a Dockerfile to run this project in docker too. To run in docker you need complie docker image, following next steps
+5. **Run the Backend Server**:
 
-#### 1. Build docker image
-```bash
-docker build -t stock-simulator-backend .
-```
+   ```bash
+   python app.py
+   ```
 
-#### 2. Execute docker container
-```bash
-docker run -p 5000:5000 stock-simulator-backend
-```
+6. **Test the Backend**:
 
-or change env vars using
+   The backend API will be accessible at `http://localhost:5000`. Test it with the `/api/health` endpoint:
 
-```bash
-docker run -p 5000:5000 -e FLASK_DEBUG=true stock-simulator-backend
-```
+   ```bash
+   curl http://localhost:5000/api/health
+   ```
 
-#### 3. Test backend is UP :
+---
 
-The backend API will be accessible at http://localhost:5000. There are a health endpoint at api/health path, so to test call Backend Server plus /health endpoint to check if it is up and running.
+## **Docker Setup**
 
+To run the backend in a Docker container:
 
-## How to run in production
+1. **Build the Docker Image**:
+
+   ```bash
+   docker build -t stock-simulator-backend .
+   ```
+
+2. **Run the Docker Container**:
+
+   ```bash
+   docker run -p 5000:5000 stock-simulator-backend
+   ```
+
+3. **Run with Environment Variables**:
+
+   ```bash
+   docker run -p 5000:5000 -e FLASK_DEBUG=true stock-simulator-backend
+   ```
+
+4. **Test the Backend**:
+
+   The backend API will be accessible at `http://localhost:5000`. Test it with the `/api/health` endpoint:
+
+   ```bash
+   curl http://localhost:5000/api/health
+   ```
+
+---
+
+## **How to Run in Production**
 
 Production Server Setup: Ensure to use a production-grade WSGI server like Gunicorn or uWSGI. Here’s a quick setup for Gunicorn:
 
@@ -111,23 +142,61 @@ Production Server Setup: Ensure to use a production-grade WSGI server like Gunic
 gunicorn app:app --bind 0.0.0.0:5000
 ```
 
-## Postman collection
-We make availablea postman collection and environment at folder /postman to test APIs.
+---
 
-## Frontend
-We developed a react frontend app to serve as UI for this backend. The frontend are avaliable at: https://github.com/fnldesign/stock-simulator-frontend
+## **License**
 
-![Main Screen](./stock_simulator_frontend_screnn.png)
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License** (CC BY-NC 4.0).  
+You are free to share and adapt the material under the following terms:
 
-## Contribution Instructions
-- Fork the repository.
-- Create a branch for your feature or bug fix (git checkout -b feature/nova-feature).
-- Commit your changes (git commit -m 'Add new feature').
-- Push to the branch (git push origin feature/nova-feature).
-- Open a Pull Request.
+- **Attribution**: Credit the original authors, link to the license, and indicate any changes made.
+- **NonCommercial**: You may not use the material for commercial purposes.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more information.
+For details, see the [LICENSE.md](./LICENSE.md) file.
 
-## Contact
-If you have any questions or suggestions, feel free to open an issue in the repository or get in touch at fnldesign@hotmail.com.
+---
+
+## **Contribution Instructions**
+
+We are using **Git Flow** for branch management. To contribute:
+
+1. **Fork the Repository**:
+
+   ```bash
+   git clone https://github.com/<your-username>/stock-simulator-backend.git
+   cd stock-simulator-backend
+   ```
+
+2. **Create a Feature Branch**:
+
+   ```bash
+   git flow feature start <feature-name>
+   ```
+
+3. **Make Changes and Commit**:
+
+   ```bash
+   git add .
+   git commit -m "Description of changes"
+   ```
+
+4. **Push the Branch**:
+
+   ```bash
+   git push origin feature/<feature-name>
+   ```
+
+5. **Open a Pull Request**: Submit your changes for review.
+
+---
+
+## **Contact**
+
+For questions or suggestions, feel free to reach out:
+
+- **Email**: fnldesign@hotmail.com
+- **Open an Issue**: [GitHub Issues](https://github.com/fnldesign/stock-simulator-backend/issues)
+
+---
+
+Thank you for contributing to the Stock Investment Simulation Project! 🚀
